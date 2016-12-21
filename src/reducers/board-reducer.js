@@ -20,13 +20,13 @@ export default (state = initialGridState, action) => {
 
     case TOGGLE_CELL: {
       const cell = newState.grid[action.xCoord][action.yCoord];
-      if (cell.status === 'alive') cell.status = 'dead';
-      else if (cell.status === 'dead') cell.status = 'alive';
+      if (cell.status) cell.status = 0;
+      else if (!cell.status) cell.status = 1;
       break;
     }
 
     case STEP_FORWARD:
-      newState.grid = stepForward(state.grid, gridHeight, gridWidth);
+      newState.grid = stepForward(state.grid);
       break;
 
     default:
