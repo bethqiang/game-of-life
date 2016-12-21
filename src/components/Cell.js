@@ -2,7 +2,7 @@ import React from 'react';
 
 const Cell = props => {
   return (
-    <td>{`(${props.x}, ${props.y})`}</td>
+    <td className={props.status === 'alive' ? 'alive' : ''}></td>
   );
 };
 

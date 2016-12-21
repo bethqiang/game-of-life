@@ -1,3 +1,7 @@
+/* Variables */
+
+$alive-color: #23C9FF;
+
 /* Footer */
 
 html {
@@ -22,3 +26,29 @@ footer {
 .glyphicon-heart {
   color: #FF5252;
 }
+
+/* Grid/Board */
+
+table {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+td {
+  border: 1px solid #ddd;
+  height: 1em;
+  width: 1em;
+}
+
+.alive {
+  background-color: $alive-color;
+
+  &:hover {
+    background-color: darken($alive-color, 25%);
+  }
+}
+
+td:hover:not(.alive) {
+  background-color: #DDD;
+}
+
