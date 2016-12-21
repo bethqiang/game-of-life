@@ -1,6 +1,7 @@
 import {
   TOGGLE_CELL,
-  STEP_FORWARD
+  STEP_FORWARD,
+  CLEAR
 } from '../constants';
 
 import { makeGrid, stepForward } from '../utils';
@@ -27,6 +28,10 @@ export default (state = initialGridState, action) => {
 
     case STEP_FORWARD:
       newState.grid = stepForward(state.grid);
+      break;
+
+    case CLEAR:
+      newState.grid = makeGrid(gridHeight, gridWidth, false, true);
       break;
 
     default:

@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import Controls from '../components/Controls';
-import { stepForward } from '../action-creators/controls';
+import { stepForward, clear } from '../action-creators/controls';
 
 const mapStateToProps = state => {
   return {
@@ -13,6 +13,9 @@ const mapDispatchToProps = dispatch => {
   return {
     stepForward() {
       dispatch(stepForward());
+    },
+    clear() {
+      dispatch(clear());
     }
   };
 };

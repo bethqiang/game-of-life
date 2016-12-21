@@ -1,9 +1,12 @@
-export const makeGrid = (height, width, randomize = true) => {
+export const makeGrid = (height, width, randomize = true, clear = false) => {
   let grid = [];
   for (let yCoord = 0; yCoord < height; yCoord++) {
     let row = [];
     for (let xCoord = 0; xCoord < width; xCoord++) {
       let status;
+      if (clear) {
+        status = 0;
+      }
       if (randomize) {
         if (Math.random() > 0.75) status = 1;
         else status = 0;
