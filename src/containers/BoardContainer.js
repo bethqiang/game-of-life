@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 
 import Board from '../components/Board';
+import { toggleCell } from '../action-creators/board';
 
 const mapStateToProps = state => {
   return {
@@ -8,8 +9,17 @@ const mapStateToProps = state => {
   };
 };
 
+const mapDispatchToProps = dispatch => {
+  return {
+    toggleCell(xCoord, yCoord) {
+      dispatch(toggleCell(xCoord, yCoord));
+    }
+  };
+};
+
 const BoardContainer = connect(
-  mapStateToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(Board);
 
 export default BoardContainer;
