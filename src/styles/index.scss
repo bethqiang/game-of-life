@@ -27,11 +27,16 @@ footer {
   color: #FF5252;
 }
 
+/* Generation Counter */
+
+#gen-counter-div {
+  text-align: center;
+}
+
 /* Grid/Board */
 
 table {
-  margin-left: auto;
-  margin-right: auto;
+  margin: 1.5em auto;
 }
 
 td {
@@ -52,3 +57,13 @@ td:hover:not(.alive) {
   background-color: #DDD;
 }
 
+/* Buttons */
+
+#button-div {
+  text-align: center;
+}
+
+.btn {
+  margin-left: 0.25em;
+  margin-right: 0.25em;
+}
