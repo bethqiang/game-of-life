@@ -12,7 +12,7 @@ const Board = props => {
               {row.map((cell, xCoord) => (
                 <Cell key={xCoord}
                   id={props.id}
-                  status={props.board.grid[xCoord][yCoord].status}
+                  status={props.board.grid[yCoord][xCoord].status}
                   handleClick={() => props.toggleCell(xCoord, yCoord)} />
               ))}
             </tr>

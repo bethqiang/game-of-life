@@ -7,7 +7,7 @@ import {
 import { makeGrid, stepForward } from '../utils';
 
 const gridHeight = 20;
-const gridWidth = 20;
+const gridWidth = 30;
 
 const initialGridState = {
   grid: makeGrid(gridHeight, gridWidth)
@@ -20,7 +20,7 @@ export default (state = initialGridState, action) => {
   switch (action.type) {
 
     case TOGGLE_CELL: {
-      const cell = newState.grid[action.xCoord][action.yCoord];
+      const cell = newState.grid[action.yCoord][action.xCoord];
       if (cell.status) cell.status = 0;
       else if (!cell.status) cell.status = 1;
       break;

@@ -36,12 +36,12 @@ const getLivingNeighbors = (xCoord, yCoord, grid = []) => {
   let count = 0;
 
   count += grid[up][left].status;
-  count += grid[up][yCoord].status;
+  count += grid[up][xCoord].status;
   count += grid[up][right].status;
-  count += grid[xCoord][left].status;
-  count += grid[xCoord][right].status;
+  count += grid[yCoord][left].status;
+  count += grid[yCoord][right].status;
   count += grid[down][left].status;
-  count += grid[down][yCoord].status;
+  count += grid[down][xCoord].status;
   count += grid[down][right].status;
 
   return count;
@@ -58,7 +58,7 @@ export const stepForward = (grid = []) => {
   for (let yCoord = 0; yCoord < height; yCoord++) {
     let newRow = [];
     for (let xCoord = 0; xCoord < width; xCoord++) {
-      let currStatus = grid[xCoord][yCoord].status;
+      let currStatus = grid[yCoord][xCoord].status;
       let count = getLivingNeighbors(xCoord, yCoord, grid);
       if (currStatus && (count === 2 || count === 3)) {
         status = 1;
