@@ -1,25 +1,33 @@
-import { TOGGLE_CELL } from '../constants';
+import {
+  TOGGLE_CELL,
+  STEP_FORWARD
+} from '../constants';
 
-import { makeGrid } from '../utils';
+import { makeGrid, stepForward } from '../utils';
 
 const gridHeight = 20;
 const gridWidth = 20;
 
-// might need to make initial state an object - leaving it as an array for now, but just a note to self
-const initialGridState = makeGrid(gridHeight, gridWidth);
+const initialGridState = {
+  grid: makeGrid(gridHeight, gridWidth)
+};
 
 export default (state = initialGridState, action) => {
 
-  const newState = Object.assign([], state);
+  const newState = Object.assign({}, state);
 
   switch (action.type) {
 
     case TOGGLE_CELL: {
-      const cell = newState[action.xCoord][action.yCoord];
+      const cell = newState.grid[action.xCoord][action.yCoord];
       if (cell.status === 'alive') cell.status = 'dead';
       else if (cell.status === 'dead') cell.status = 'alive';
       break;
     }
+
+    case STEP_FORWARD:
+      newState.grid = stepForward(state.grid, gridHeight, gridWidth);
+      break;
 
     default:
       return state;

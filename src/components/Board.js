@@ -7,11 +7,12 @@ const Board = props => {
     <div>
       <table>
         <tbody>
-          {props.board.map((row, yCoord) => (
+          {props.board.grid.map((row, yCoord) => (
             <tr key={yCoord}>
               {row.map((cell, xCoord) => (
                 <Cell key={xCoord}
-                  status={props.board[xCoord][yCoord].status}
+                  id={props.id}
+                  status={props.board.grid[xCoord][yCoord].status}
                   handleClick={() => props.toggleCell(xCoord, yCoord)} />
               ))}
             </tr>
