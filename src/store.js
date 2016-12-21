@@ -1,10 +1,11 @@
-// import { createStore, applyMiddleware, combineReducers } from 'redux';
-// import createLogger from 'redux-logger';
+import { createStore, applyMiddleware, combineReducers } from 'redux';
+import createLogger from 'redux-logger';
 
-// const reducers = combineReducers({
-//   // reducers
-// });
+import boardReducer from './reducers/board-reducer';
 
-// const reduxMiddleware = applyMiddleware(createLogger());
+const reducers = combineReducers({
+  board: boardReducer
+});
 
-// export default createStore(reducers, reduxMiddleware);
+const logger = createLogger();
+export default createStore(reducers, applyMiddleware(logger));
