@@ -1,16 +1,16 @@
 export const makeGrid = (height, width, randomize = true) => {
   let grid = [];
-  for (let i = 0; i < height; i++) {
+  for (let yCoord = 0; yCoord < height; yCoord++) {
     let row = [];
-    for (let j = 0; j < width; j++) {
+    for (let xCoord = 0; xCoord < width; xCoord++) {
       let status;
       if (randomize) {
         if (Math.random() > 0.75) status = 'alive';
         else status = 'dead';
       }
       row.push({
-        cellX: i,
-        cellY: j,
+        xCoord,
+        yCoord,
         status
       });
     }
