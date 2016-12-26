@@ -6,6 +6,10 @@ import { stepForward, play, stop, clear, makeRandom } from '../action-creators';
 
 class ButtonsContainer extends Component {
 
+  componentDidMount() {
+    this.play();
+  }
+
   play() {
     let interval = setInterval(this.props.stepForward, 100);
     this.props.play(interval);
