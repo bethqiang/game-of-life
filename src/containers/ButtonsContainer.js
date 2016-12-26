@@ -5,18 +5,24 @@ import Button from '../components/Button';
 import { stepForward, play, stop, clear } from '../action-creators/buttons';
 
 class ButtonsContainer extends Component {
-  constructor() {
-    super();
-    this.play = this.play.bind(this);
-  }
+
   play() {
     let interval = setInterval(this.props.stepForward, 100);
     this.props.play(interval);
   }
+
   stop() {
     clearInterval(this.props.board.timer);
     this.props.stop();
   }
+
+  clear() {
+    if (this.props.board.isPlaying) {
+      this.stop();
+    }
+    this.props.clear();
+  }
+
   render() {
     return (
       <div id="button-div">
@@ -33,7 +39,7 @@ class ButtonsContainer extends Component {
           icon={'glyphicon glyphicon-stop'}
         />
         <Button
-          handleClick={() => this.props.clear()}
+          handleClick={() => this.clear()}
           icon={'glyphicon glyphicon-remove'}
         />
         <Button
