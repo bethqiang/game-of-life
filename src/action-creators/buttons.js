@@ -12,9 +12,10 @@ export const stepForward = () => {
   };
 };
 
-export const play = () => {
+export const play = (timer) => {
   return {
-    type: PLAY
+    type: PLAY,
+    timer
   };
 };
 

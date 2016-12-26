@@ -1,7 +1,8 @@
 import {
   TOGGLE_CELL,
   STEP_FORWARD,
-  CLEAR
+  PLAY,
+  CLEAR,
 } from '../constants';
 
 import { makeGrid, stepForward } from '../utils';
@@ -10,7 +11,9 @@ const gridHeight = 20;
 const gridWidth = 30;
 
 const initialGridState = {
-  grid: makeGrid(gridHeight, gridWidth)
+  grid: makeGrid(gridHeight, gridWidth),
+  timer: null,
+  isPlaying: false
 };
 
 export default (state = initialGridState, action) => {
@@ -28,6 +31,11 @@ export default (state = initialGridState, action) => {
 
     case STEP_FORWARD:
       newState.grid = stepForward(state.grid);
+      break;
+
+    case PLAY:
+      newState.isPlaying = true;
+      newState.timer = action.timer;
       break;
 
     case CLEAR:

@@ -2,7 +2,7 @@ import React from 'react';
 
 import GenCounter from './GenCounter';
 import BoardContainer from '../containers/BoardContainer';
-import ControlsContainer from '../containers/ControlsContainer';
+import ButtonsContainer from '../containers/ButtonsContainer';
 
 const App = () => {
   return (
@@ -10,7 +10,7 @@ const App = () => {
       <h1>Game of Life, woo!</h1>
       <GenCounter />
       <BoardContainer />
-      <ControlsContainer />
+      <ButtonsContainer />
     </div>
   );
 };
