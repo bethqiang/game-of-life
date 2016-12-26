@@ -2,6 +2,7 @@ import {
   TOGGLE_CELL,
   STEP_FORWARD,
   PLAY,
+  STOP,
   CLEAR,
 } from '../constants';
 
@@ -36,6 +37,11 @@ export default (state = initialGridState, action) => {
     case PLAY:
       newState.isPlaying = true;
       newState.timer = action.timer;
+      break;
+
+    case STOP:
+      newState.isPlaying = false;
+      newState.timer = null;
       break;
 
     case CLEAR:

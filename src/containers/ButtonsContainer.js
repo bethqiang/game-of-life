@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import Button from '../components/Button';
-import { stepForward, clear, play } from '../action-creators/buttons';
+import { stepForward, play, stop, clear } from '../action-creators/buttons';
 
 class ButtonsContainer extends Component {
   constructor() {
@@ -12,6 +12,10 @@ class ButtonsContainer extends Component {
   play() {
     let interval = setInterval(this.props.stepForward, 100);
     this.props.play(interval);
+  }
+  stop() {
+    clearInterval(this.props.board.timer);
+    this.props.stop();
   }
   render() {
     return (
@@ -25,6 +29,7 @@ class ButtonsContainer extends Component {
           icon={'glyphicon glyphicon-play'}
         />
         <Button
+          handleClick={() => this.stop()}
           icon={'glyphicon glyphicon-stop'}
         />
         <Button
@@ -52,6 +57,9 @@ const mapDispatchToProps = dispatch => {
     },
     play(timer) {
       dispatch(play(timer));
+    },
+    stop() {
+      dispatch(stop());
     },
     clear() {
       dispatch(clear());
