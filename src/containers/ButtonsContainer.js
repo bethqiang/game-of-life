@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import Button from '../components/Button';
-import { stepForward, play, stop, clear, makeRandom } from '../action-creators/buttons';
+import { stepForward, play, stop, clear, makeRandom } from '../action-creators';
 
 class ButtonsContainer extends Component {
 

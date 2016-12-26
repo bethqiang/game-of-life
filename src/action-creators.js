@@ -1,10 +1,19 @@
 import {
+  TOGGLE_CELL,
   STEP_FORWARD,
   PLAY,
   STOP,
   CLEAR,
   MAKE_RANDOM
-} from '../constants';
+} from './constants';
+
+export const toggleCell = (xCoord, yCoord) => {
+  return {
+    type: TOGGLE_CELL,
+    xCoord,
+    yCoord
+  };
+};
 
 export const stepForward = () => {
   return {

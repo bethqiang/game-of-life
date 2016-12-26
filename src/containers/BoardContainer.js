@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import Board from '../components/Board';
-import { toggleCell } from '../action-creators/board';
+import { toggleCell } from '../action-creators';
 
 const mapStateToProps = state => {
   return {
