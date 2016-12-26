@@ -1,27 +1,4 @@
-export const makeGrid = (height, width, randomize = true, clear = false) => {
-  let grid = [];
-  for (let yCoord = 0; yCoord < height; yCoord++) {
-    let row = [];
-    for (let xCoord = 0; xCoord < width; xCoord++) {
-      let status;
-      if (clear) {
-        status = 0;
-      }
-      if (randomize) {
-        if (Math.random() > 0.75) status = 1;
-        else status = 0;
-      }
-      row.push({
-        xCoord,
-        yCoord,
-        status
-      });
-    }
-    grid.push(row);
-  }
-  return grid;
-};
-
+// Counts the number of living neighbors a given cell has
 const getLivingNeighbors = (xCoord, yCoord, grid = []) => {
 
   const height = grid.length;
@@ -47,33 +24,47 @@ const getLivingNeighbors = (xCoord, yCoord, grid = []) => {
   return count;
 };
 
-// some repetition here and maybe not the most idiomatic redux way to do it - refactor later
-export const stepForward = (grid = []) => {
-
-  const height = grid.length;
-  const width = grid[0].length;
-  const newGrid = [];
+// Determines the next state of a cell based on the number of living neighbors
+const determineNextState = (grid = [], xCoord, yCoord) => {
   let status;
+  let currStatus = grid[yCoord][xCoord].status;
+  let count = getLivingNeighbors(xCoord, yCoord, grid);
+  if (currStatus && (count === 2 || count === 3)) {
+    status = 1;
+  } else if (!currStatus && count === 3) {
+    status = 1;
+  } else {
+    status = 0;
+  }
+  return status;
+};
 
+// Generates a grid based on conditions and/or previous grid
+const makeGrid = (condition, height, width, grid = []) => {
+  const newGrid = [];
   for (let yCoord = 0; yCoord < height; yCoord++) {
-    let newRow = [];
+    const row = [];
     for (let xCoord = 0; xCoord < width; xCoord++) {
-      let currStatus = grid[yCoord][xCoord].status;
-      let count = getLivingNeighbors(xCoord, yCoord, grid);
-      if (currStatus && (count === 2 || count === 3)) {
-        status = 1;
-      } else if (!currStatus && count === 3) {
-        status = 1;
-      } else {
+      let status;
+      if (condition === 'clear') {
         status = 0;
       }
-      newRow.push({
+      if (condition === 'random') {
+        if (Math.random() > 0.75) status = 1;
+        else status = 0;
+      }
+      if (condition === 'next') {
+        status = determineNextState(grid, xCoord, yCoord);
+      }
+      row.push({
         xCoord,
         yCoord,
         status
       });
     }
-    newGrid.push(newRow);
+    newGrid.push(row);
   }
   return newGrid;
 };
+
+export default makeGrid;

@@ -7,13 +7,13 @@ import {
   MAKE_RANDOM
 } from '../constants';
 
-import { makeGrid, stepForward } from '../utils';
+import makeGrid from '../utils';
 
 const gridHeight = 20;
 const gridWidth = 30;
 
 const initialGridState = {
-  grid: makeGrid(gridHeight, gridWidth),
+  grid: makeGrid('random', gridHeight, gridWidth),
   timer: null,
   isPlaying: false
 };
@@ -32,7 +32,7 @@ export default (state = initialGridState, action) => {
     }
 
     case STEP_FORWARD:
-      newState.grid = stepForward(state.grid);
+      newState.grid = makeGrid('next', gridHeight, gridWidth, state.grid);
       break;
 
     case PLAY:
@@ -46,11 +46,11 @@ export default (state = initialGridState, action) => {
       break;
 
     case CLEAR:
-      newState.grid = makeGrid(gridHeight, gridWidth, false, true);
+      newState.grid = makeGrid('clear', gridHeight, gridWidth);
       break;
 
     case MAKE_RANDOM:
-      newState.grid = makeGrid(gridHeight, gridWidth, true);
+      newState.grid = makeGrid('random', gridHeight, gridWidth);
       break;
 
     default:
