@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import Button from '../components/Button';
-import { stepForward, play, stop, clear } from '../action-creators/buttons';
+import { stepForward, play, stop, clear, makeRandom } from '../action-creators/buttons';
 
 class ButtonsContainer extends Component {
 
@@ -21,6 +21,13 @@ class ButtonsContainer extends Component {
       this.stop();
     }
     this.props.clear();
+  }
+
+  makeRandom() {
+    if (this.props.board.isPlaying) {
+      this.stop();
+    }
+    this.props.makeRandom();
   }
 
   render() {
@@ -43,6 +50,7 @@ class ButtonsContainer extends Component {
           icon={'glyphicon glyphicon-remove'}
         />
         <Button
+          handleClick={() => this.makeRandom()}
           icon={'glyphicon glyphicon-random'}
         />
       </div>
@@ -69,6 +77,9 @@ const mapDispatchToProps = dispatch => {
     },
     clear() {
       dispatch(clear());
+    },
+    makeRandom() {
+      dispatch(makeRandom());
     }
   };
 };

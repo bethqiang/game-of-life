@@ -4,6 +4,7 @@ import {
   PLAY,
   STOP,
   CLEAR,
+  MAKE_RANDOM
 } from '../constants';
 
 import { makeGrid, stepForward } from '../utils';
@@ -46,6 +47,10 @@ export default (state = initialGridState, action) => {
 
     case CLEAR:
       newState.grid = makeGrid(gridHeight, gridWidth, false, true);
+      break;
+
+    case MAKE_RANDOM:
+      newState.grid = makeGrid(gridHeight, gridWidth, true);
       break;
 
     default:
