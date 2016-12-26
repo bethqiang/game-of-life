@@ -42,8 +42,9 @@ class ButtonsContainer extends Component {
           icon={'glyphicon glyphicon-step-forward'}
         />
         <Button
-          handleClick={() => this.play()}
+          handleClick={() => this.props.board.isPlaying ? null : this.play()}
           icon={'glyphicon glyphicon-play'}
+          isPlaying={this.props.board.isPlaying}
         />
         <Button
           handleClick={() => this.stop()}
