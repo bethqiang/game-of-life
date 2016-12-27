@@ -6,17 +6,27 @@ import { stepForward, play, stop, clear, makeRandom } from '../action-creators';
 
 class ButtonsContainer extends Component {
 
+  constructor() {
+    super();
+    this.play = this.play.bind(this);
+  }
+
   componentDidMount() {
+    this.start();
+  }
+
+  start() {
     this.play();
+    this.props.play(this.requestID);
   }
 
   play() {
-    let interval = setInterval(this.props.stepForward, 100);
-    this.props.play(interval);
+    this.requestID = requestAnimationFrame(this.play);
+    this.props.stepForward();
   }
 
   stop() {
-    clearInterval(this.props.board.timer);
+    cancelAnimationFrame(this.props.board.requestID);
     this.props.stop();
   }
 
@@ -42,7 +52,7 @@ class ButtonsContainer extends Component {
           icon={'glyphicon glyphicon-step-forward'}
         />
         <Button
-          handleClick={() => this.props.board.isPlaying ? null : this.play()}
+          handleClick={() => this.props.board.isPlaying ? null : this.start()}
           icon={'glyphicon glyphicon-play'}
           isPlaying={this.props.board.isPlaying}
         />
@@ -74,8 +84,8 @@ const mapDispatchToProps = dispatch => {
     stepForward() {
       dispatch(stepForward());
     },
-    play(timer) {
-      dispatch(play(timer));
+    play(requestID) {
+      dispatch(play(requestID));
     },
     stop() {
       dispatch(stop());

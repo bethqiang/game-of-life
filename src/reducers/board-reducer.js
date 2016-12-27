@@ -14,7 +14,7 @@ const gridWidth = 30;
 
 const initialGridState = {
   grid: makeGrid('random', gridHeight, gridWidth),
-  timer: null,
+  requestID: null,
   isPlaying: false
 };
 
@@ -37,12 +37,12 @@ export default (state = initialGridState, action) => {
 
     case PLAY:
       newState.isPlaying = true;
-      newState.timer = action.timer;
+      newState.requestID = action.requestID;
       break;
 
     case STOP:
       newState.isPlaying = false;
-      newState.timer = null;
+      newState.requestID = null;
       break;
 
     case CLEAR:

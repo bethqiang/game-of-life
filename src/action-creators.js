@@ -21,10 +21,10 @@ export const stepForward = () => {
   };
 };
 
-export const play = (timer) => {
+export const play = (requestID) => {
   return {
     type: PLAY,
-    timer
+    requestID
   };
 };
 
