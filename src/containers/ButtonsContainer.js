@@ -12,16 +12,12 @@ class ButtonsContainer extends Component {
   }
 
   componentDidMount() {
-    this.start();
-  }
-
-  start() {
     this.play();
-    this.props.play(this.requestID);
   }
 
   play() {
-    this.requestID = requestAnimationFrame(this.play);
+    const requestID = requestAnimationFrame(this.play);
+    this.props.play(requestID);
     this.props.stepForward();
   }
 
@@ -52,7 +48,7 @@ class ButtonsContainer extends Component {
           icon={'glyphicon glyphicon-step-forward'}
         />
         <Button
-          handleClick={() => this.props.board.isPlaying ? null : this.start()}
+          handleClick={() => this.props.board.isPlaying ? null : this.play()}
           icon={'glyphicon glyphicon-play'}
           isPlaying={this.props.board.isPlaying}
         />
