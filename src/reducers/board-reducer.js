@@ -9,8 +9,8 @@ import {
 
 import makeGrid from '../utils';
 
-const gridHeight = 20;
-const gridWidth = 30;
+const gridHeight = 30;
+const gridWidth = 45;
 
 const initialGridState = {
   grid: makeGrid('random', gridHeight, gridWidth),

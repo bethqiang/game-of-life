@@ -7,7 +7,7 @@ import ButtonsContainer from '../containers/ButtonsContainer';
 const App = () => {
   return (
     <div>
-      <h1>Game of Life, woo!</h1>
+      <h1>Game of Life</h1>
       <GenCounterContainer />
       <BoardContainer />
       <ButtonsContainer />

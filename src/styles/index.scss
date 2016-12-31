@@ -27,10 +27,18 @@ footer {
   color: #FF5252;
 }
 
+/* Header & Description */
+
+h1 {
+  text-align: center;
+}
+
 /* Generation Counter */
 
 #gen-counter-div {
   text-align: center;
+  margin-top: 2em;
+  margin-bottom: 2em;
 }
 
 /* Grid/Board */
@@ -41,8 +49,8 @@ table {
 
 td {
   border: 1px solid #ddd;
-  height: 1em;
-  width: 1em;
+  height: 0.85em;
+  width: 0.85em;
 }
 
 .alive {
@@ -61,6 +69,8 @@ td:hover:not(.alive) {
 
 #button-div {
   text-align: center;
+  margin-top: 2em;
+  margin-bottom: 1em;
 }
 
 .btn {
