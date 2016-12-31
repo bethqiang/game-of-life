@@ -1,0 +1,2 @@
+html{height:100%}body{min-height:100%;display:flex;flex-direction:column}.container{flex:1}footer{padding:1em;text-align:center}.glyphicon-heart{color:#ff5252}#gen-counter-div,h1{text-align:center}#gen-counter-div{margin-top:2em;margin-bottom:2em}table{margin:1.5em auto}td{border:1px solid #ddd;height:.85em;width:.85em}.alive{background-color:#23c9ff}.alive:hover{background-color:#007ba3}td:hover:not(.alive){background-color:#ddd}#button-div{text-align:center;margin-top:2em;margin-bottom:1em}.btn{margin-left:.25em;margin-right:.25em}
+/*# sourceMappingURL=style.css.map*/
